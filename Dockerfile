@@ -8,12 +8,13 @@ RUN dpkg --add-architecture i386
 
 RUN apt-get -qq update && apt-get -qqy install                          \
     sudo subversion                                                     \
-    build-essential gcc-multilib g++-multilib p7zip-full nasm           \
+    build-essential gcc-4.8-multilib g++-4.8-multilib p7zip-full nasm   \
     libc6-dev-i386 lib32stdc++6 lib32z1                                 \
     curl                                                                \
     python2.7:i386 python-dev:i386 libjpeg-dev:i386 libfreetype6-dev:i386 zlib1g-dev:i386 uuid-dev:i386  \
     && rm -rf /var/lib/apt/lists/*
-
+    
+RUN  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 1000 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 
