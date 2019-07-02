@@ -8,10 +8,10 @@ RUN dpkg --add-architecture i386
 
 RUN apt-get -qq update && apt-get -qqy install                          \
     sudo subversion                                                     \
-    build-essential gcc-multilib uuid-dev p7zip-full nasm               \
+    build-essential gcc-multilib g++-multilib p7zip-full nasm           \
     libc6-dev-i386 lib32stdc++6 lib32z1                                 \
     curl                                                                \
-    python2.7:i386 python-dev:i386 libjpeg-dev:i386 libfreetype6-dev:i386 zlib1g-dev:i386  \
+    python2.7:i386 python-dev:i386 libjpeg-dev:i386 libfreetype6-dev:i386 zlib1g-dev:i386 uuid-dev:i386  \
     && rm -rf /var/lib/apt/lists/*
 
 
