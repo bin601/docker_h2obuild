@@ -31,7 +31,7 @@ if not "%HASH_STOPPED%" == "" (
     goto :EOF
 ) else (
     echo "existing container not found, createing a new one, named %CONTAINER%"
-    docker run --name=%CONTAINER% --hostname=%CONTAINER% -it  -v %SOURCE_FOLDER%:/opt  %BASE_IMAGE% %START_SHELL%
+    docker run --name=%CONTAINER% --hostname=%CONTAINER% -it  -v %SOURCE_FOLDER%:/opt -v samba-public:/opt2 %BASE_IMAGE% %START_SHELL% 
 )
 
 
