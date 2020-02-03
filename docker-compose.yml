@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+    smb:
+        image: dperson/samba
+        
+        networks:
+            - default
+        
+        volumes:
+            - samba_public:/mnt/public
+            
+        restart: unless-stopped
+            
+        command: '-s "Downloads;/mnt/public;yes;no;no;all;user" -u "user;password" '
+
+volumes:
+    samba_public:
+
+networks:
+    default:    
