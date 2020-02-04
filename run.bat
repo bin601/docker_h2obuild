@@ -31,7 +31,7 @@ REM
 REM create samba service
 REM
 echo create samba service
-docker run --name %SMB_NAME% -v samba-public:/mnt/public -d dperson/samba  -u "user;password" -g "aio read size = 0" -g "aio write size = 0" -r -s "public;/mnt/public;yes;no;no;all;user" > nul 
+docker run --name %SMB_NAME% -e "TZ=Asia/Taipei" -v samba-public:/mnt/public -d dperson/samba  -u "user;password" -g "aio read size = 0" -g "aio write size = 0" -r -s "public;/mnt/public;yes;no;no;all;user" > nul 
 
 :start
 
@@ -57,7 +57,7 @@ REM
 set SHARDED_FOLDER=d:\svn
 
 if exist %SHARDED_FOLDER% set SHARDED_CMD=-v %SHARDED_FOLDER%:/opt2
-docker run  -it --rm --workdir=/opt -v samba-public:/opt -v d:\svn/opt2 bin601/h2obuild /bin/bash
+docker run  -it --rm --workdir=/samba -v samba-public:/samba -v d:\svn:/share bin601/h2obuild /bin/bash
 
 
 
