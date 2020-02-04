@@ -57,7 +57,7 @@ REM
 set SHARDED_FOLDER=d:\svn
 
 if exist %SHARDED_FOLDER% set SHARDED_CMD=-v %SHARDED_FOLDER%:/opt2
-docker run  -it --rm --workdir=/opt -v samba-public:/opt %SHARDED_CMD% bin601/h2obuild /bin/bash
+docker run  -it --rm --workdir=/opt -v samba-public:/opt -v d:\svn/opt2 bin601/h2obuild /bin/bash
 
 
 
