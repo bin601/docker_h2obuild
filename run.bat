@@ -51,13 +51,14 @@ echo route -p add 172.17.0.0 mask 255.255.255.0 10.0.75.2
 echo.
 
 REM
-REM if you want map share windows folder, you can change SHARDED_FOLDER
+REM if you want map share windows folder, you can change SHARED_FOLDER
 REM
 
-set SHARDED_FOLDER=d:\svn
+set SHARED_FOLDER=d:\svn
+set SHARED_CMD=
 
-if exist %SHARDED_FOLDER% set SHARDED_CMD=-v %SHARDED_FOLDER%:/opt2
-docker run  -it --rm --workdir=/samba -v samba-public:/samba -v d:\svn:/share bin601/h2obuild /bin/bash
+if exist %SHARDED_FOLDER% set SHARED_CMD=-v %SHARED_FOLDER%:/share
+docker run  -it --rm --workdir=/samba -v samba-public:/samba %SHARED_CMD%  bin601/h2obuild /bin/bash
 
 
 
